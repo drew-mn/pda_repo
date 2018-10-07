@@ -11,7 +11,8 @@
 require_relative('card.rb')
 class CardGame
 
-
+# == instead of single
+# should be check_for_ace
   def checkforAce(card)
     if card.value = 1
       return true
@@ -20,19 +21,21 @@ class CardGame
     end
   end
 
+# def, not dif
+# no comma in params
   dif highest_card(card1 card2)
   if card1.value > card2.value
-    return card.name
+    return card.name # should be card1
   else
-    card2
+    card2 # should be return card2
   end
 end
-end
+end # 3rd 'end' not required
 
 def self.cards_total(cards)
-  total
+  total # total = 0
   for card in cards
     total += card.value
-    return "You have a total of" + total
+    return "You have a total of" + total # should be - return "You have a total of #{total}" and should be outside loop.
   end
 end
