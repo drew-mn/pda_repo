@@ -1,27 +1,28 @@
-const Calculator = function(){
+const Calculator = function() {
   this.previousOperator = null; // the last operator the user clicked
-  this.previousTotal = 0;       // the total of the previous operation
-  this.newTotal = true;         // whether the previous operation has just been calculated
-  this.runningTotal = 0;        // the current value to operate on the previous total
+  this.previousTotal = 0; // the total of the previous operation
+  this.newTotal = true; // whether the previous operation has just been calculated
+  this.runningTotal = 0; // the current value to operate on the previous total
 }
 
-Calculator.prototype.add = function(number){
+Calculator.prototype.add = function(number) {
   this.runningTotal = parseFloat(this.previousTotal) + parseFloat(number);
 }
 
-Calculator.prototype.subtract = function(number){
+Calculator.prototype.subtract = function(number) {
   this.runningTotal = parseFloat(this.previousTotal) - parseFloat(number);
 }
 
-Calculator.prototype.multiply = function(number){
+Calculator.prototype.multiply = function(number) {
   this.runningTotal = parseFloat(this.previousTotal) * parseFloat(number);
 }
 
-Calculator.prototype.divide = function(number){
+Calculator.prototype.divide = function(number) {
   this.runningTotal = parseFloat(this.previousTotal) / parseFloat(number);
 }
 
-Calculator.prototype.numberClick = function(number){
+
+Calculator.prototype.numberClick = function(number) {
 
   // when a number is clicked, if a previous operation has just been completed,
   // or there is a zero in the running total, clear the running total, and reset
@@ -36,24 +37,24 @@ Calculator.prototype.numberClick = function(number){
 
 }
 
-Calculator.prototype.operatorClick = function(operator){
+Calculator.prototype.operatorClick = function(operator) {
 
   // if there was a previous operator recorded as having been clicked, perform
   // the operation for the previous operator
   if (this.previousTotal && this.previousOperator) {
     switch (this.previousOperator) {
       case ('+'):
-      this.add(this.runningTotal);
-      break;
+        this.add(this.runningTotal);
+        break;
       case ('-'):
-      this.subtract(this.runningTotal);
-      break;
+        this.subtract(this.runningTotal);
+        break;
       case ('*'):
-      this.multiply(this.runningTotal);
-      break;
+        this.multiply(this.runningTotal);
+        break;
       case ('/'):
-      this.divide(this.runningTotal);
-      break;
+        this.divide(this.runningTotal);
+        break;
     }
   }
 
@@ -71,7 +72,7 @@ Calculator.prototype.operatorClick = function(operator){
   this.newTotal = true;
 }
 
-Calculator.prototype.clearClick = function(){
+Calculator.prototype.clearClick = function() {
   if (this.runningTotal == 0) {
     this.previousOperator = null;
     this.previousTotal = null;
@@ -79,4 +80,6 @@ Calculator.prototype.clearClick = function(){
   this.runningTotal = 0;
 }
 
-if(typeof module != 'undefined'){ module.exports = Calculator}
+if (typeof module != 'undefined') {
+  module.exports = Calculator
+}
